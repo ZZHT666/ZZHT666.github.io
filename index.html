@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jin Zhou – Personal Homepage</title>
+  <meta name="description" content="Personal academic homepage of Jin Zhou, dual-degree student in Electrical Engineering and Mechanical Engineering interested in VLSI and Machine Learning." />
+
+  <!-- Optional Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.08);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --chip-bg: rgba(15, 23, 42, 0.9);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --radius-full: 999px;
+      --transition-fast: 180ms ease-out;
+      --max-width: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 42%, #000 80%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 18px 32px;
+    }
+
+    .page-inner {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    /* Top navigation */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, #3b82f6, #22c55e, #a855f7, #3b82f6);
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(37, 99, 235, 0.35);
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #0f172a, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text-main {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      padding: 4px 6px;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      background: rgba(37, 99, 235, 0.18);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.nav-highlight {
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(59, 130, 246, 0.8);
+      background: linear-gradient(120deg, rgba(59, 130, 246, 0.16), rgba(56, 189, 248, 0.1));
+      color: #e5e7eb;
+      padding-inline: 12px;
+      font-weight: 500;
+    }
+
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 22px;
+      margin-bottom: 26px;
+    }
+
+    .hero-main {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: var(--radius-2xl);
+      padding: 22px 22px 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: -60px;
+      background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.14), transparent 55%),
+                  radial-gradient(circle at 100% 0%, rgba(129, 140, 248, 0.12), transparent 52%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-main-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 9px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 34px);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #f9fafb, #93c5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 32rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: var(--chip-bg);
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(59, 130, 246, 1);
+      background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.3), rgba(59, 130, 246, 0.9));
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+      box-shadow: 0 16px 46px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-ghost {
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(156, 163, 175, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 7px 13px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(30, 64, 175, 0.6);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .meta-item strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Side card */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 13px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .badge-soft {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #bfdbfe;
+      border: 1px solid rgba(37, 99, 235, 0.5);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .timeline-main {
+      flex: 1 1 auto;
+    }
+
+    .timeline-title {
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .timeline-sub {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .timeline-tag {
+      flex: 0 0 auto;
+      font-size: 11px;
+      color: #93c5fd;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .card-list strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Section layout */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    section {
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-subtle);
+      padding: 15px 18px 16px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    section header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    section h2 {
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    section .section-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .about-grid p {
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+
+    .about-grid dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 5px;
+      column-gap: 10px;
+      font-size: 12px;
+    }
+
+    .about-grid dt {
+      color: #9ca3af;
+    }
+
+    .about-grid dd {
+      color: #e5e7eb;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .item-title {
+      color: #e5e7eb;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .item-meta {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 3px;
+    }
+
+    .item-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .item-link {
+      font-size: 11px;
+      color: #93c5fd;
+      margin-top: 2px;
+    }
+
+    /* Footer */
+    footer {
+      max-width: var(--max-width);
+      width: 100%;
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    footer a {
+      color: #9ca3af;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-side {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-main {
+        padding: 18px 16px 16px;
+      }
+
+      section {
+        padding-inline: 14px;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page-shell {
+        padding-inline: 14px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="page-inner">
+      <!-- Top navigation -->
+      <nav class="nav">
+        <div class="logo-mark">
+          <div class="logo-circle">
+            <div class="logo-inner">JZ</div>
+          </div>
+          <div class="logo-text">
+            <span class="logo-text-main">Jin&nbsp;Zhou</span>
+            <span class="logo-text-sub">EE &amp; ME · VLSI &amp; ML</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact" class="nav-highlight">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Hero section -->
+      <section class="hero" aria-label="Hero">
+        <div class="hero-main">
+          <div class="hero-main-inner">
+            <div class="pill">
+              <span class="pill-dot"></span>
+              <span>Graduate application homepage</span>
+            </div>
+            <h1 class="hero-title">
+              Hi, I'm <span>Jin&nbsp;Zhou</span>.
+            </h1>
+            <p class="hero-subtitle">
+              I am a dual-degree undergraduate in Electrical Engineering (University of Michigan) and Mechanical
+              Engineering (Shanghai Jiao Tong University). My interests lie in <strong>VLSI design</strong>,
+              <strong>reliable and energy-efficient hardware</strong>, and <strong>machine learning for
+                medical imaging</strong>.
+            </p>
+            <div class="hero-tags">
+              <span class="chip">VLSI &amp; IC Design</span>
+              <span class="chip">Timing-error Resilience</span>
+              <span class="chip">ML for Medical Imaging</span>
+            </div>
+            <div class="hero-actions">
+              <!-- TODO: replace cv.pdf with your real CV file name -->
+              <a class="btn-primary" href="cv.pdf" target="_blank" rel="noopener">
+                <span>Download CV</span>
+                <span>↗</span>
+              </a>
+              <a class="btn-ghost" href="#research">
+                <span>View selected work</span>
+              </a>
+            </div>
+            <div class="hero-meta">
+              <div class="meta-item">
+                <strong>Current location:</strong> Ann Arbor, MI &amp; Shanghai, China
+              </div>
+              <div class="meta-item">
+                <strong>Looking for:</strong> Fall 2026 MS/PhD positions in VLSI / ML
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side" aria-label="Quick profile">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Education</div>
+              <span class="badge-soft">Undergraduate</span>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-main">
+                  <div class="timeline-title">University of Michigan</div>
+                  <div class="timeline-sub">BSE, Electrical Engineering</div>
+                </div>
+                <div class="timeline-tag">2023 – 2026</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-main">
+                  <div class="timeline-title">Shanghai Jiao Tong University</div>
+                  <div class="timeline-sub">BEng, Mechanical Engineering</div>
+                </div>
+                <div class="timeline-tag">2020 – 2025</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Highlights</div>
+            </div>
+            <ul class="card-list">
+              <li><strong>Razor III GPU timing-error resilience</strong> — standard-cell layout and evaluation.</li>
+              <li><strong>Magnetically actuated capsule robot</strong> — 3D-printed anisotropic coating for directional rolling.</li>
+              <li><strong>DeepMTS survival prediction</strong> — foundation-model-based CT/PET feature integration for HNSCC.</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <main>
+        <!-- About section -->
+        <section id="about" aria-labelledby="about-heading">
+          <header>
+            <h2 id="about-heading">About</h2>
+            <p class="section-subtitle">Background &amp; interests</p>
+          </header>
+          <div class="about-grid">
+            <div>
+              <p>
+                I enjoy working at the intersection of <strong>hardware</strong> and <strong>algorithms</strong>.
+                My early training in mechanical system modeling and controls shaped how I think about
+                physical constraints, while my later shift toward electrical engineering and machine
+                learning showed me how to build robust computing systems on top of them.
+              </p>
+              <p>
+                At Michigan, I have been involved in <strong>tape-out-oriented VLSI design</strong> and
+                <strong>GPU timing-error resilience</strong> research, including standard-cell layout,
+                Razor-style error detection, and system-level evaluation. In parallel, I work on
+                <strong>ML for medical imaging</strong> for head and neck cancer survival prediction
+                using multi-modal CT/PET data.
+              </p>
+            </div>
+            <div>
+              <dl>
+                <dt>Research interests</dt>
+                <dd>VLSI design; error-resilient architectures; ML for medical imaging</dd>
+                <dt>Long-term goal</dt>
+                <dd>Become a researcher and educator in reliable, energy-efficient computing hardware.</dd>
+                <dt>Keywords</dt>
+                <dd>
+                  <div class="tag-row">
+                    <span class="tag">Standard-cell layout</span>
+                    <span class="tag">DVFS &amp; timing errors</span>
+                    <span class="tag">Compute-in-memory</span>
+                    <span class="tag">3D printing</span>
+                  </div>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <!-- Research section -->
+        <section id="research" aria-labelledby="research-heading">
+          <header>
+            <h2 id="research-heading">Research</h2>
+            <p class="section-subtitle">Selected projects &amp; ongoing work</p>
+          </header>
+          <ul class="item-list">
+            <li>
+              <div class="item-title">Timing-Error Resilient GPU with Razor III</div>
+              <div class="item-meta">University of Michigan · VLSI &amp; architecture · 2024 – present</div>
+              <p>
+                Working on standard-cell level design and layout of Razor-based flip-flops and integrating
+                them into a GPU-like pipeline to study the trade-offs between aggressive voltage scaling,
+                timing-error detection, and overall energy efficiency.
+              </p>
+              <div class="item-badge-row">
+                <span class="tag">Razor III</span>
+                <span class="tag">TSMC PDK</span>
+                <span class="tag">GPU pipeline</span>
+              </div>
+            </li>
+            <li>
+              <div class="item-title">3D-Printed Anisotropic Magnetic Coating for Capsule Robot</div>
+              <div class="item-meta">UM Radiation Oncology &amp; UT Austin · Robotics &amp; fabrication · 2024 – present</div>
+              <p>
+                Designing a soft magnetic coating that enables directional rolling of a magnetically actuated
+                capsule robot inside a complex environment, combining 3D printing, material characterization,
+                and control-oriented modeling.
+              </p>
+              <div class="item-badge-row">
+                <span class="tag">Capsule robot</span>
+                <span class="tag">Soft magnetics</span>
+                <span class="tag">3D printing</span>
+              </div>
+            </li>
+            <li>
+              <div class="item-title">DeepMTS + Foundation Models for HNSCC Survival</div>
+              <div class="item-meta">ML for Health · Medical imaging &amp; survival analysis · 2024 – present</div>
+              <p>
+                Extending the DeepMTS framework with CT/PET foundation models to improve survival prediction
+                for head and neck squamous cell carcinoma, focusing on multi-modal feature fusion and robust
+                evaluation across cohorts.
+              </p>
+              <div class="item-badge-row">
+                <span class="tag">CT/PET</span>
+                <span class="tag">Survival analysis</span>
+                <span class="tag">Foundation models</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Projects section -->
+        <section id="projects" aria-labelledby="projects-heading">
+          <header>
+            <h2 id="projects-heading">Projects</h2>
+            <p class="section-subtitle">Course &amp; independent projects</p>
+          </header>
+          <ul class="item-list">
+            <li>
+              <div class="item-title">Haptic Steering Wheel: CAN-Based Virtual Wall &amp; Chain</div>
+              <div class="item-meta">EECS 461 · Embedded control · 2024</div>
+              <p>
+                Implemented a real-time embedded controller for a haptic steering wheel using CAN bus,
+                ADC/PWM drivers, and virtual wall/chain models, focusing on stability, latency, and safety
+                under tight real-time constraints.
+              </p>
+              <div class="item-badge-row">
+                <span class="tag">Embedded C</span>
+                <span class="tag">Real-time control</span>
+                <span class="tag">CAN bus</span>
+              </div>
+            </li>
+            <li>
+              <div class="item-title">Tape-Out-Oriented Digital IC Design</div>
+              <div class="item-meta">VLSI design flow · 2023 – 2024</div>
+              <p>
+                Completed a full digital design flow including RTL, synthesis, place-and-route, sign-off,
+                and pad-ring integration, gaining hands-on experience with DRC/LVS/PEX and timing closure.
+              </p>
+              <div class="item-badge-row">
+                <span class="tag">RTL to GDS</span>
+                <span class="tag">DRC/LVS</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Publications / Manuscripts section -->
+        <section id="publications" aria-labelledby="publications-heading">
+          <header>
+            <h2 id="publications-heading">Publications &amp; Manuscripts</h2>
+            <p class="section-subtitle">Preprints &amp; in preparation</p>
+          </header>
+          <ul class="item-list">
+            <li>
+              <div class="item-title">3D-Printed Anisotropic Soft Magnetic Coating for Directional Rolling of a Capsule Robot</div>
+              <div class="item-meta">Under preparation for ICRA 2026</div>
+              <p>
+                J. Zhou, et al. Designing and characterizing an anisotropic magnetic coating to enable
+                robust directional rolling of a magnetically actuated capsule robot in complex environments.
+              </p>
+              <div class="item-link">Draft available upon request.</div>
+            </li>
+            <li>
+              <div class="item-title">DeepMTS with CT/PET Foundation Models for HNSCC Survival Prediction</div>
+              <div class="item-meta">ML4H 2025 – Findings Track, Area 2</div>
+              <p>
+                J. Zhou, et al. Integrating pre-trained CT/PET encoders into DeepMTS for improved survival
+                prediction and generalization across cohorts.
+              </p>
+              <div class="item-link">Preprint coming soon.</div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact" aria-labelledby="contact-heading">
+          <header>
+            <h2 id="contact-heading">Contact</h2>
+            <p class="section-subtitle">Get in touch</p>
+          </header>
+          <div class="about-grid">
+            <div>
+              <p>
+                If you are interested in my work or have questions about potential collaboration or graduate
+                study, feel free to reach out. I am happy to share project details, code, or additional
+                materials upon request.
+              </p>
+            </div>
+            <div>
+              <dl>
+                <dt>Email</dt>
+                <!-- TODO: replace with your preferred email address -->
+                <dd><a href="mailto:your_email@umich.edu">your_email@umich.edu</a></dd>
+                <dt>GitHub</dt>
+                <!-- TODO: replace with your GitHub profile link -->
+                <dd><a href="https://github.com/your-github" target="_blank" rel="noopener">github.com/your-github</a></dd>
+                <dt>LinkedIn</dt>
+                <!-- TODO: replace with your LinkedIn profile link -->
+                <dd><a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">linkedin.com/in/your-linkedin</a></dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>
+          © <span id="year-span"></span> Jin Zhou. All rights reserved.
+        </div>
+        <div>
+          Last updated: <span>Nov 2025</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Small helper to keep the year up to date
+    const y = new Date().getFullYear();
+    const span = document.getElementById("year-span");
+    if (span) span.textContent = y;
+  </script>
+</body>
+</html>
