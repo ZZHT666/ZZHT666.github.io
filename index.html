@@ -1,890 +1,834 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jin Zhou – Personal Homepage</title>
-  <meta name="description" content="Personal academic homepage of Jin Zhou, dual-degree student in Electrical Engineering and Mechanical Engineering interested in VLSI and Machine Learning." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haotian Zhang</title>
+<meta name="description" content="Haotian Zhang, master's student in computer science at UT Austin. Machine learning systems, operating systems and distributed systems projects, and research on multimodal survival prediction.">
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink: #000000;
+    --muted: #595959;
+    --rule: #cfcfcf;
+    --link: #0b3fbf;
+    --panel: #f5f5f3;
 
-  <!-- Optional Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    /* diagram colors */
+    --box: #5f6368;
+    --line: #2b2b2b;
+    --s-blue: #2a78d6;  --f-blue: #e6f0fc;
+    --s-amber: #b87400; --f-amber: #fdf3dd;
+    --s-green: #128a5f; --f-green: #e2f5ec;
+    --s-red: #cf3f3e;   --f-red: #fdeceb;
+    --f-gray: #e9e9e6;
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --mark-muted: #898781;
 
-  <style>
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #050816;
-      --bg-elevated: #0b1020;
-      --accent: #3b82f6;
-      --accent-soft: rgba(59, 130, 246, 0.08);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.35);
-      --chip-bg: rgba(15, 23, 42, 0.9);
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
-      --radius-xl: 18px;
-      --radius-2xl: 24px;
-      --radius-full: 999px;
-      --transition-fast: 180ms ease-out;
-      --max-width: 980px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 42%, #000 80%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page-shell {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 18px 32px;
-    }
-
-    .page-inner {
-      width: 100%;
-      max-width: var(--max-width);
-    }
-
-    /* Top navigation */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .logo-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, #3b82f6, #22c55e, #a855f7, #3b82f6);
-      padding: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 18px rgba(37, 99, 235, 0.35);
-    }
-
-    .logo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #0f172a, #020617);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 700;
-      color: #e5e7eb;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .logo-text-main {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .logo-text-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 13px;
-      padding: 4px 6px;
-      border-radius: var(--radius-full);
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      backdrop-filter: blur(18px);
-    }
-
-    .nav-links a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: var(--text-muted);
-      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      background: rgba(37, 99, 235, 0.18);
-      color: #e5e7eb;
-      transform: translateY(-1px);
-    }
-
-    .nav-links a.nav-highlight {
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(59, 130, 246, 0.8);
-      background: linear-gradient(120deg, rgba(59, 130, 246, 0.16), rgba(56, 189, 248, 0.1));
-      color: #e5e7eb;
-      padding-inline: 12px;
-      font-weight: 500;
-    }
-
-    /* Hero section */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 22px;
-      margin-bottom: 26px;
-    }
-
-    .hero-main {
-      background: radial-gradient(circle at top left, #111827, #020617);
-      border-radius: var(--radius-2xl);
-      padding: 22px 22px 20px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: -60px;
-      background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.14), transparent 55%),
-                  radial-gradient(circle at 100% 0%, rgba(129, 140, 248, 0.12), transparent 52%);
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .hero-main-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.9);
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 9px;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
-    }
-
-    .hero-title {
-      font-size: clamp(28px, 4vw, 34px);
-      margin-bottom: 8px;
-      letter-spacing: 0.04em;
-    }
-
-    .hero-title span {
-      background: linear-gradient(120deg, #f9fafb, #93c5fd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 32rem;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 16px;
-    }
-
-    .chip {
-      padding: 4px 10px;
-      font-size: 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: var(--chip-bg);
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .btn-primary {
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(59, 130, 246, 1);
-      background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.3), rgba(59, 130, 246, 0.9));
-      padding: 7px 14px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #f9fafb;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
-      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.5);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.06);
-      box-shadow: 0 16px 46px rgba(37, 99, 235, 0.6);
-    }
-
-    .btn-ghost {
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(156, 163, 175, 0.7);
-      background: rgba(15, 23, 42, 0.95);
-      padding: 7px 13px;
-      font-size: 13px;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(30, 64, 175, 0.6);
-      color: #e5e7eb;
-      transform: translateY(-1px);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    .meta-item strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    /* Side card */
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, #020617, #020617);
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--border-subtle);
-      padding: 14px 14px 13px;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      gap: 12px;
-    }
-
-    .card-title {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .badge-soft {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #bfdbfe;
-      border: 1px solid rgba(37, 99, 235, 0.5);
-    }
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 12px;
-    }
-
-    .timeline-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .timeline-main {
-      flex: 1 1 auto;
-    }
-
-    .timeline-title {
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .timeline-sub {
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .timeline-tag {
-      flex: 0 0 auto;
-      font-size: 11px;
-      color: #93c5fd;
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .card-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .card-list strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    /* Section layout */
-    main {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    section {
-      background: radial-gradient(circle at top left, #020617, #020617);
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--border-subtle);
-      padding: 15px 18px 16px;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
-    }
-
-    section header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    section h2 {
-      font-size: 15px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    section .section-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
-      gap: 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .about-grid p {
-      line-height: 1.55;
-      margin-bottom: 6px;
-    }
-
-    .about-grid dl {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      row-gap: 5px;
-      column-gap: 10px;
-      font-size: 12px;
-    }
-
-    .about-grid dt {
-      color: #9ca3af;
-    }
-
-    .about-grid dd {
-      color: #e5e7eb;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .item-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .item-title {
-      color: #e5e7eb;
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .item-meta {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 3px;
-    }
-
-    .item-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .item-link {
-      font-size: 11px;
-      color: #93c5fd;
-      margin-top: 2px;
-    }
-
-    /* Footer */
-    footer {
-      max-width: var(--max-width);
-      width: 100%;
-      margin-top: 18px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-    }
-
-    footer a {
-      color: #9ca3af;
-    }
-
-    /* Responsive */
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-side {
-        order: -1;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero-main {
-        padding: 18px 16px 16px;
-      }
-
-      section {
-        padding-inline: 14px;
-      }
-
-      .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .page-shell {
-        padding-inline: 14px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      footer {
-        flex-direction: column;
-      }
-    }
-  </style>
+      --paper: #17191d;
+      --ink: #ececec;
+      --muted: #a9a9a9;
+      --rule: #3b3e44;
+      --link: #9dbdff;
+      --panel: #1f2227;
+
+      --box: #8f949c;
+      --line: #d0d0d0;
+      --s-blue: #3987e5;  --f-blue: #1b2b44;
+      --s-amber: #c98500; --f-amber: #33290f;
+      --s-green: #199e70; --f-green: #13302a;
+      --s-red: #e66767;   --f-red: #3b2020;
+      --f-gray: #2c3036;
+      --grid: #30343a;
+      --axis: #4a4f57;
+      --mark-muted: #898781;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 4rem 1.25rem 5rem;
+  }
+
+  a { color: var(--link); text-underline-offset: 0.15em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+
+  /* Intro */
+  h1 {
+    font-size: 2.75rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.25rem;
+  }
+  .lede {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin: 0 0 1rem;
+  }
+  .intro p { margin: 0 0 1rem; }
+  .links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    font-family: var(--sans);
+    font-size: 1rem;
+  }
+
+  /* Sections */
+  .section { margin-top: 3.5rem; }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin: 0 0 1.25rem;
+    padding-top: 0.9rem;
+    border-top: 2px solid var(--ink);
+  }
+  .section-note { margin: -0.5rem 0 1.75rem; color: var(--muted); }
+
+  .entry { margin: 0 0 3rem; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry.compact { margin-bottom: 2rem; }
+  h3 {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin: 0;
+  }
+  .meta {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0.25rem 0 0;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.88em;
+  }
+  .entry ul { margin: 0.6rem 0 0; padding-left: 1.2rem; }
+  .entry li { margin: 0.35rem 0; }
+  .entry-links {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    margin: 0.75rem 0 0;
+    display: flex;
+    gap: 1.4rem;
+  }
+
+  /* Figures */
+  figure { margin: 1.25rem 0 0; }
+  .diagram {
+    overflow-x: auto;
+    background: var(--panel);
+    border-radius: 8px;
+    padding: 1.1rem 1rem;
+  }
+  .diagram svg {
+    display: block;
+    width: 100%;
+    min-width: 36rem;
+    height: auto;
+    font-family: var(--sans);
+  }
+  figcaption {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* Diagram parts */
+  .b { fill: var(--paper); stroke: var(--box); stroke-width: 1.25; }
+  .b.blue { fill: var(--f-blue); stroke: var(--s-blue); }
+  .b.amber { fill: var(--f-amber); stroke: var(--s-amber); }
+  .b.green { fill: var(--f-green); stroke: var(--s-green); }
+  .b.red { fill: var(--f-red); stroke: var(--s-red); }
+  .b.gray { fill: var(--f-gray); stroke: none; }
+  .b.dash { stroke-dasharray: 5 4; }
+  .band { fill: var(--f-gray); }
+  .l { fill: none; stroke: var(--line); stroke-width: 1.5; }
+  .l.blue { stroke: var(--s-blue); }
+  .l.amber { stroke: var(--s-amber); }
+  .l.red { stroke: var(--s-red); }
+  .l.soft { stroke: var(--muted); }
+  .l.dash { stroke-dasharray: 5 4; }
+  .l.thick { stroke-width: 2.25; }
+  .hair { fill: none; stroke: var(--grid); stroke-width: 1; }
+  .mk { fill: var(--line); }
+  .mk.blue { fill: var(--s-blue); }
+  .mk.amber { fill: var(--s-amber); }
+  .mk.red { fill: var(--s-red); }
+  .mk.soft { fill: var(--muted); }
+  .t { font-size: 14px; font-weight: 600; fill: var(--ink); }
+  .n { font-size: 12.5px; fill: var(--ink); }
+  .s { font-size: 12.5px; fill: var(--muted); }
+  .h { font-size: 12.5px; font-weight: 600; fill: var(--muted); }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; fill: var(--ink); }
+  .badge { fill: var(--ink); }
+  .badge-t { font-size: 12.5px; font-weight: 700; fill: var(--paper); }
+  .dot-on { fill: var(--s-blue); }
+  .dot-off { fill: var(--paper); stroke: var(--box); stroke-width: 1.25; }
+
+  /* Chart parts */
+  .axis { fill: none; stroke: var(--axis); stroke-width: 1; }
+  .wh { stroke: var(--s-blue); stroke-width: 2; stroke-linecap: round; }
+  .wh.base { stroke: var(--mark-muted); }
+  .pt { fill: var(--s-blue); stroke: var(--panel); stroke-width: 2; }
+  .pt.base { fill: var(--mark-muted); }
+  .ref { fill: none; stroke: var(--mark-muted); stroke-width: 1; }
+
+  /* Plain lists */
+  .plain { list-style: none; margin: 0; padding: 0; }
+  .plain li { margin: 0 0 0.9rem; }
+  .plain li:last-child { margin-bottom: 0; }
+  .skills { margin: 0; }
+  .skills div { margin: 0 0 0.5rem; }
+  .skills dt { display: inline; font-weight: 700; }
+  .skills dd { display: inline; margin: 0; }
+
+  footer {
+    margin-top: 4rem;
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 34rem) {
+    body { font-size: 1.0625rem; }
+    .page { padding: 2.5rem 1.1rem 3.5rem; }
+    h1 { font-size: 2.1rem; }
+    .lede { font-size: 1.25rem; }
+    .section { margin-top: 2.75rem; }
+  }
+</style>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="page-inner">
-      <!-- Top navigation -->
-      <nav class="nav">
-        <div class="logo-mark">
-          <div class="logo-circle">
-            <div class="logo-inner">JZ</div>
-          </div>
-          <div class="logo-text">
-            <span class="logo-text-main">Jin&nbsp;Zhou</span>
-            <span class="logo-text-sub">EE &amp; ME · VLSI &amp; ML</span>
-          </div>
+
+<!-- Arrowheads shared by every diagram on the page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path class="mk" d="M0 0.8 9 5 0 9.2z"/></marker>
+    <marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path class="mk blue" d="M0 0.8 9 5 0 9.2z"/></marker>
+    <marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path class="mk amber" d="M0 0.8 9 5 0 9.2z"/></marker>
+    <marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path class="mk red" d="M0 0.8 9 5 0 9.2z"/></marker>
+    <marker id="ah-soft" viewBox="0 0 10 10" refX="8.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path class="mk soft" d="M0 0.8 9 5 0 9.2z"/></marker>
+  </defs>
+</svg>
+
+<main class="page">
+
+  <header class="intro">
+    <h1>Haotian Zhang</h1>
+    <p class="lede">I'm a master's student in computer science at UT Austin, interested in machine learning systems and the infrastructure underneath them.</p>
+    <p>Right now I'm a machine learning engineer intern at VortexNet. Before that I interned at Ronovo Surgical on stereo vision for surgical robots, and did research on multimodal survival prediction at the University of Michigan.</p>
+    <p>I'm looking for a software engineering internship for summer 2027.</p>
+    <ul class="links">
+      <li><a href="mailto:zht99918@gmail.com">zht99918@gmail.com</a></li>
+      <li><a href="https://github.com/ZZHT666">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/haotian-zhang-734305331/">LinkedIn</a></li>
+      <li><a href="resume.pdf">Resume (PDF)</a></li>
+    </ul>
+  </header>
+
+  <section class="section" aria-labelledby="experience">
+    <h2 id="experience">Experience</h2>
+    <p class="section-note">Both internships are under confidentiality, so I keep the descriptions short.</p>
+
+    <article class="entry compact">
+      <h3>Machine Learning Engineer Intern, VortexNet</h3>
+      <p class="meta">Aug 2026 – present, Covina, CA</p>
+      <ul>
+        <li>Train lightweight CLIP models with DINOv2 and MiniLM encoders for zero-shot image-text retrieval, with inference under 50 ms.</li>
+        <li>Built the retrieval pipeline on GCP, with Cloud Storage for data, BigQuery for metadata, and GCP endpoints for inference.</li>
+        <li>Set up dataset versioning and experiment tracking with Git, DVC, MLflow, and Docker.</li>
+      </ul>
+    </article>
+
+    <article class="entry compact">
+      <h3>Machine Learning Engineer Intern, Ronovo Surgical</h3>
+      <p class="meta">May 2026 – Aug 2026, Shanghai</p>
+      <ul>
+        <li>Built the stereo calibration and rectification pipeline for dual-camera endoscopic video and reached sub-pixel vertical alignment.</li>
+        <li>Benchmarked 9 monocular and stereo depth models and built a 3D reconstruction pipeline that turns disparity into point clouds.</li>
+        <li>Built a surgical action detector on robot kinematics data. F1 rose from 0.46 to 0.96 across 7 clinical actions.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section" aria-labelledby="research">
+    <h2 id="research">Research</h2>
+
+    <article class="entry">
+      <h3>Foundation models for head-and-neck cancer survival prediction</h3>
+      <p class="meta">Research assistant, Radiation Oncology, University of Michigan, Mar 2025 – Jan 2026</p>
+      <ul>
+        <li>The question: when the dataset is small, do frozen, pretrained CT and PET foundation models help predict recurrence-free survival? We used the public HECKTOR 2022 training split, 524 PET/CT cases from 7 centers.</li>
+        <li>The method: start from a DeepMTS + DAFT baseline, extract fixed embeddings from a CT model (CT-FM) and a PET model (SegAnyPET), pass each through a small linear projection, and concatenate them just before the survival head.</li>
+        <li>The result: under 5-fold cross-validation, mean C-index went from 0.616 to 0.743 and 1-year AUROC from 0.671 to 0.744, with less variation across folds. The folds are small and the ranges overlap, so the paper presents these as preliminary.</li>
+        <li>Published in the Findings Track of the ML4H 2025 Symposium. I'm the first author, with Yiming Liu, Yile Sun, Liyue Shen, and Lise Wei.</li>
+      </ul>
+      <p class="entry-links">
+        <a href="https://openreview.net/forum?id=2rAfeggIpR">Paper on OpenReview</a>
+        <a href="https://github.com/ZZHT666/DeepMTS-FM">Code</a>
+      </p>
+
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 300" role="img" aria-labelledby="figr1-title">
+            <title id="figr1-title">Model structure. A PET/CT volume goes through a segmentation backbone and a survival network with a DAFT block. Separately, the CT volume goes through a frozen CT foundation model and the PET volume through a frozen PET foundation model, each followed by a linear projection. All features and the clinical data are concatenated and passed to the survival head, which outputs a risk score.</title>
+            <!-- lines -->
+            <path class="l" d="M125 44H163" marker-end="url(#ah)"/>
+            <path class="l" d="M315 34H353" marker-end="url(#ah)"/>
+            <path class="l" d="M505 44H533" marker-end="url(#ah)"/>
+            <path class="l" d="M240 74V88H533" marker-end="url(#ah)"/>
+            <path class="l" d="M125 128H163" marker-end="url(#ah)"/>
+            <path class="l" d="M315 128H353" marker-end="url(#ah)"/>
+            <path class="l" d="M505 128H533" marker-end="url(#ah)"/>
+            <path class="l" d="M125 192H163" marker-end="url(#ah)"/>
+            <path class="l" d="M315 192H353" marker-end="url(#ah)"/>
+            <path class="l" d="M505 192H533" marker-end="url(#ah)"/>
+            <path class="l" d="M125 268H533" marker-end="url(#ah)"/>
+            <path class="l soft dash" d="M519 268V60H507" marker-end="url(#ah-soft)"/>
+            <path class="l" d="M563 152H601" marker-end="url(#ah)"/>
+
+            <!-- inputs -->
+            <rect class="b" x="5" y="22" width="120" height="44" rx="6"/>
+            <text class="t" x="65" y="49" text-anchor="middle">PET/CT volume</text>
+            <rect class="b" x="5" y="106" width="120" height="44" rx="6"/>
+            <text class="t" x="65" y="133" text-anchor="middle">CT volume</text>
+            <rect class="b" x="5" y="170" width="120" height="44" rx="6"/>
+            <text class="t" x="65" y="197" text-anchor="middle">PET volume</text>
+            <rect class="b" x="5" y="246" width="120" height="44" rx="6"/>
+            <text class="t" x="65" y="264" text-anchor="middle">Clinical data</text>
+            <text class="s" x="65" y="281" text-anchor="middle">9 covariates</text>
+
+            <!-- trained baseline -->
+            <rect class="b blue" x="165" y="14" width="150" height="60" rx="6"/>
+            <text class="t" x="240" y="40" text-anchor="middle">Segmentation</text>
+            <text class="t" x="240" y="57" text-anchor="middle">backbone</text>
+            <rect class="b blue" x="355" y="14" width="150" height="60" rx="6"/>
+            <text class="t" x="430" y="40" text-anchor="middle">Survival network</text>
+            <text class="s" x="430" y="57" text-anchor="middle">with DAFT block</text>
+
+            <!-- frozen foundation models -->
+            <rect class="b amber dash" x="165" y="106" width="150" height="44" rx="6"/>
+            <text class="t" x="240" y="124" text-anchor="middle">CT-FM</text>
+            <text class="s" x="240" y="141" text-anchor="middle">frozen, 512-d</text>
+            <rect class="b amber dash" x="165" y="170" width="150" height="44" rx="6"/>
+            <text class="t" x="240" y="188" text-anchor="middle">PET-FM</text>
+            <text class="s" x="240" y="205" text-anchor="middle">frozen, 768-d</text>
+
+            <rect class="b blue" x="355" y="106" width="150" height="44" rx="6"/>
+            <text class="t" x="430" y="133" text-anchor="middle">Linear projection</text>
+            <rect class="b blue" x="355" y="170" width="150" height="44" rx="6"/>
+            <text class="t" x="430" y="197" text-anchor="middle">Linear projection</text>
+
+            <!-- fusion -->
+            <rect class="b gray" x="535" y="14" width="28" height="276" rx="6"/>
+            <text class="s" transform="translate(553.5 152) rotate(-90)" text-anchor="middle">concatenate</text>
+            <rect class="b blue" x="603" y="120" width="112" height="64" rx="6"/>
+            <text class="t" x="659" y="148" text-anchor="middle">Survival head</text>
+            <text class="s" x="659" y="166" text-anchor="middle">risk score</text>
+          </svg>
         </div>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#projects">Projects</a>
-          <a href="#publications">Publications</a>
-          <a href="#contact" class="nav-highlight">Contact</a>
+        <figcaption>Model structure, simplified from Figure 1 of the paper. Dashed boxes are frozen foundation models and blue boxes are trained. The dashed line is the clinical data entering the DAFT block.</figcaption>
+      </figure>
+
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 186" role="img" aria-labelledby="figr2-title">
+            <title id="figr2-title">Results under 5-fold cross-validation, mean plus or minus standard deviation. C-index: baseline 0.616 plus or minus 0.082, with CT-FM 0.715 plus or minus 0.075, with PET-FM 0.736 plus or minus 0.060, with both 0.743 plus or minus 0.067. One-year AUROC: baseline 0.671 plus or minus 0.158, with CT-FM 0.710 plus or minus 0.083, with PET-FM 0.712 plus or minus 0.100, with both 0.744 plus or minus 0.094.</title>
+
+            <text class="t" x="150" y="20">C-index</text>
+            <text class="t" x="440" y="20">1-year AUROC</text>
+
+            <!-- gridlines, 0.4 to 0.9 -->
+            <path class="hair" d="M150 36V162M186 36V162M222 36V162M258 36V162M294 36V162M330 36V162"/>
+            <path class="hair" d="M440 36V162M476 36V162M512 36V162M548 36V162M584 36V162M620 36V162"/>
+            <path class="axis" d="M150 162H330M440 162H620"/>
+            <text class="s" x="150" y="178" text-anchor="middle">0.4</text>
+            <text class="s" x="222" y="178" text-anchor="middle">0.6</text>
+            <text class="s" x="294" y="178" text-anchor="middle">0.8</text>
+            <text class="s" x="440" y="178" text-anchor="middle">0.4</text>
+            <text class="s" x="512" y="178" text-anchor="middle">0.6</text>
+            <text class="s" x="584" y="178" text-anchor="middle">0.8</text>
+
+            <!-- baseline mean as a reference line -->
+            <path class="ref" d="M227.8 36V162M537.6 36V162"/>
+
+            <text class="n" x="5" y="56">Baseline</text>
+            <text class="n" x="5" y="88">+ CT-FM</text>
+            <text class="n" x="5" y="120">+ PET-FM</text>
+            <text class="n" x="5" y="152">+ CT-FM and PET-FM</text>
+
+            <g>
+              <title>C-index, baseline: 0.616 ± 0.082</title>
+              <line class="wh base" x1="198.2" y1="52" x2="257.3" y2="52"/>
+              <circle class="pt base" cx="227.8" cy="52" r="5"/>
+            </g>
+            <g>
+              <title>C-index, with CT-FM: 0.715 ± 0.075</title>
+              <line class="wh" x1="236.4" y1="84" x2="290.4" y2="84"/>
+              <circle class="pt" cx="263.4" cy="84" r="5"/>
+            </g>
+            <g>
+              <title>C-index, with PET-FM: 0.736 ± 0.060</title>
+              <line class="wh" x1="249.4" y1="116" x2="292.6" y2="116"/>
+              <circle class="pt" cx="271" cy="116" r="5"/>
+            </g>
+            <g>
+              <title>C-index, with CT-FM and PET-FM: 0.743 ± 0.067</title>
+              <line class="wh" x1="249.4" y1="148" x2="297.6" y2="148"/>
+              <circle class="pt" cx="273.5" cy="148" r="5"/>
+            </g>
+            <text class="n" x="340" y="56">0.616 ± 0.082</text>
+            <text class="n" x="340" y="88">0.715 ± 0.075</text>
+            <text class="n" x="340" y="120">0.736 ± 0.060</text>
+            <text class="n" x="340" y="152">0.743 ± 0.067</text>
+
+            <g>
+              <title>1-year AUROC, baseline: 0.671 ± 0.158</title>
+              <line class="wh base" x1="480.7" y1="52" x2="594.4" y2="52"/>
+              <circle class="pt base" cx="537.6" cy="52" r="5"/>
+            </g>
+            <g>
+              <title>1-year AUROC, with CT-FM: 0.710 ± 0.083</title>
+              <line class="wh" x1="521.7" y1="84" x2="581.5" y2="84"/>
+              <circle class="pt" cx="551.6" cy="84" r="5"/>
+            </g>
+            <g>
+              <title>1-year AUROC, with PET-FM: 0.712 ± 0.100</title>
+              <line class="wh" x1="516.3" y1="116" x2="588.3" y2="116"/>
+              <circle class="pt" cx="552.3" cy="116" r="5"/>
+            </g>
+            <g>
+              <title>1-year AUROC, with CT-FM and PET-FM: 0.744 ± 0.094</title>
+              <line class="wh" x1="530" y1="148" x2="597.7" y2="148"/>
+              <circle class="pt" cx="563.8" cy="148" r="5"/>
+            </g>
+            <text class="n" x="630" y="56">0.671 ± 0.158</text>
+            <text class="n" x="630" y="88">0.710 ± 0.083</text>
+            <text class="n" x="630" y="120">0.712 ± 0.100</text>
+            <text class="n" x="630" y="152">0.744 ± 0.094</text>
+          </svg>
         </div>
-      </nav>
+        <figcaption>Results from Table 1 of the paper: mean and standard deviation over 5 folds, using the best projection size for each setting. The vertical line marks the baseline mean.</figcaption>
+      </figure>
+    </article>
+  </section>
 
-      <!-- Hero section -->
-      <section class="hero" aria-label="Hero">
-        <div class="hero-main">
-          <div class="hero-main-inner">
-            <div class="pill">
-              <span class="pill-dot"></span>
-              <span>Graduate application homepage</span>
-            </div>
-            <h1 class="hero-title">
-              Hi, I'm <span>Jin&nbsp;Zhou</span>.
-            </h1>
-            <p class="hero-subtitle">
-              I am a dual-degree undergraduate in Electrical Engineering (University of Michigan) and Mechanical
-              Engineering (Shanghai Jiao Tong University). My interests lie in <strong>VLSI design</strong>,
-              <strong>reliable and energy-efficient hardware</strong>, and <strong>machine learning for
-                medical imaging</strong>.
-            </p>
-            <div class="hero-tags">
-              <span class="chip">VLSI &amp; IC Design</span>
-              <span class="chip">Timing-error Resilience</span>
-              <span class="chip">ML for Medical Imaging</span>
-            </div>
-            <div class="hero-actions">
-              <!-- TODO: replace cv.pdf with your real CV file name -->
-              <a class="btn-primary" href="cv.pdf" target="_blank" rel="noopener">
-                <span>Download CV</span>
-                <span>↗</span>
-              </a>
-              <a class="btn-ghost" href="#research">
-                <span>View selected work</span>
-              </a>
-            </div>
-            <div class="hero-meta">
-              <div class="meta-item">
-                <strong>Current location:</strong> Ann Arbor, MI &amp; Shanghai, China
-              </div>
-              <div class="meta-item">
-                <strong>Looking for:</strong> Fall 2026 MS/PhD positions in VLSI / ML
-              </div>
-            </div>
-          </div>
+  <section class="section" aria-labelledby="projects">
+    <h2 id="projects">Systems projects</h2>
+    <p class="section-note">Course projects from Web Systems (EECS 485) and Operating Systems (EECS 482) at the University of Michigan. Both courses run their projects in small teams and ask students to keep the code private, so there are no repositories to link. The diagrams are my own.</p>
+
+    <article class="entry">
+      <h3>MapReduce framework</h3>
+      <p class="meta">Python, TCP and UDP sockets, threads</p>
+      <ul>
+        <li>A Manager accepts jobs, splits the input files among map tasks, and hands tasks to Workers as JSON messages over TCP.</li>
+        <li>Each map task streams its output into one file per reducer, chosen by hashing the key, and sorts each file. Each reduce task merges its sorted files as a stream, so memory use stays constant.</li>
+        <li>Workers send a heartbeat over UDP every 2 seconds. After 5 missed heartbeats, or a refused connection, the Manager marks the Worker dead and gives its task to another Worker.</li>
+      </ul>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 206" role="img" aria-labelledby="figm1-title">
+            <title id="figm1-title">A job with two map tasks and two reduce tasks. Input files are split between the map tasks. Each map task writes two sorted partition files, part 0 and part 1. Reduce task 0 merges both part 0 files and reduce task 1 merges both part 1 files. Each reduce task writes one output file.</title>
+            <text class="h" x="65" y="16" text-anchor="middle">Input</text>
+            <text class="h" x="220" y="16" text-anchor="middle">Map</text>
+            <text class="h" x="360" y="16" text-anchor="middle">Partition, sort</text>
+            <text class="h" x="515" y="16" text-anchor="middle">Merge, reduce</text>
+            <text class="h" x="665" y="16" text-anchor="middle">Output</text>
+
+            <path class="l" d="M125 108 163 78" marker-end="url(#ah)"/>
+            <path class="l" d="M125 128 163 158" marker-end="url(#ah)"/>
+            <path class="l" d="M275 62 313 55" marker-end="url(#ah)"/>
+            <path class="l" d="M275 78 313 85" marker-end="url(#ah)"/>
+            <path class="l" d="M275 158 313 151" marker-end="url(#ah)"/>
+            <path class="l" d="M275 174 313 181" marker-end="url(#ah)"/>
+            <path class="l blue" d="M405 54 453 62" marker-end="url(#ah-blue)"/>
+            <path class="l blue" d="M405 150 453 84" marker-end="url(#ah-blue)"/>
+            <path class="l amber" d="M405 86 453 150" marker-end="url(#ah-amber)"/>
+            <path class="l amber" d="M405 182 453 176" marker-end="url(#ah-amber)"/>
+            <path class="l" d="M575 70H613" marker-end="url(#ah)"/>
+            <path class="l" d="M575 166H613" marker-end="url(#ah)"/>
+
+            <rect class="b" x="5" y="88" width="120" height="60" rx="6"/>
+            <text class="t" x="65" y="114" text-anchor="middle">Input files</text>
+            <text class="s" x="65" y="132" text-anchor="middle">split round-robin</text>
+
+            <rect class="b" x="165" y="44" width="110" height="52" rx="6"/>
+            <text class="t" x="220" y="75" text-anchor="middle">Map task 0</text>
+            <rect class="b" x="165" y="140" width="110" height="52" rx="6"/>
+            <text class="t" x="220" y="171" text-anchor="middle">Map task 1</text>
+
+            <rect class="b blue" x="315" y="42" width="90" height="24" rx="4"/>
+            <text class="n" x="360" y="58.5" text-anchor="middle">part 0</text>
+            <rect class="b amber" x="315" y="74" width="90" height="24" rx="4"/>
+            <text class="n" x="360" y="90.5" text-anchor="middle">part 1</text>
+            <rect class="b blue" x="315" y="138" width="90" height="24" rx="4"/>
+            <text class="n" x="360" y="154.5" text-anchor="middle">part 0</text>
+            <rect class="b amber" x="315" y="170" width="90" height="24" rx="4"/>
+            <text class="n" x="360" y="186.5" text-anchor="middle">part 1</text>
+
+            <rect class="b blue" x="455" y="44" width="120" height="52" rx="6"/>
+            <text class="t" x="515" y="75" text-anchor="middle">Reduce task 0</text>
+            <rect class="b amber" x="455" y="140" width="120" height="52" rx="6"/>
+            <text class="t" x="515" y="171" text-anchor="middle">Reduce task 1</text>
+
+            <rect class="b" x="615" y="56" width="100" height="28" rx="4"/>
+            <text class="n" x="665" y="74.5" text-anchor="middle">part-00000</text>
+            <rect class="b" x="615" y="152" width="100" height="28" rx="4"/>
+            <text class="n" x="665" y="170.5" text-anchor="middle">part-00001</text>
+          </svg>
         </div>
+        <figcaption>A job with two map tasks and two reduce tasks. Keys with the same hash land in the same partition, so each reduce task sees every value for its keys.</figcaption>
+      </figure>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 262" role="img" aria-labelledby="figm2-title">
+            <title id="figm2-title">Failure handling. The Manager sends tasks to three Workers over TCP and receives heartbeats over UDP. Worker 2 misses 5 heartbeats and is marked dead. Its task is sent again to Worker 3.</title>
+            <path class="l" d="M180 112 513 35" marker-end="url(#ah)"/>
+            <path class="l soft dash" d="M515 45 182 122" marker-end="url(#ah-soft)"/>
+            <path class="l red" d="M180 130H513" marker-end="url(#ah-red)"/>
+            <path class="l red thick" d="M340 123 354 137M354 123 340 137"/>
+            <text class="s" x="347" y="113" text-anchor="middle">task lost</text>
+            <path class="l blue thick" d="M180 148 511 213" marker-end="url(#ah-blue)"/>
+            <path class="l soft dash" d="M515 225 182 160" marker-end="url(#ah-soft)"/>
+            <text class="s" x="232" y="232">the same task, sent again</text>
 
-        <aside class="hero-side" aria-label="Quick profile">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Education</div>
-              <span class="badge-soft">Undergraduate</span>
-            </div>
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-main">
-                  <div class="timeline-title">University of Michigan</div>
-                  <div class="timeline-sub">BSE, Electrical Engineering</div>
-                </div>
-                <div class="timeline-tag">2023 – 2026</div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-main">
-                  <div class="timeline-title">Shanghai Jiao Tong University</div>
-                  <div class="timeline-sub">BEng, Mechanical Engineering</div>
-                </div>
-                <div class="timeline-tag">2020 – 2025</div>
-              </div>
-            </div>
-          </div>
+            <rect class="b" x="5" y="85" width="175" height="90" rx="6"/>
+            <text class="t" x="92" y="120" text-anchor="middle">Manager</text>
+            <text class="s" x="92" y="140" text-anchor="middle">tracks tasks and</text>
+            <text class="s" x="92" y="157" text-anchor="middle">Worker heartbeats</text>
 
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Highlights</div>
-            </div>
-            <ul class="card-list">
-              <li><strong>Razor III GPU timing-error resilience</strong> — standard-cell layout and evaluation.</li>
-              <li><strong>Magnetically actuated capsule robot</strong> — 3D-printed anisotropic coating for directional rolling.</li>
-              <li><strong>DeepMTS survival prediction</strong> — foundation-model-based CT/PET feature integration for HNSCC.</li>
-            </ul>
-          </div>
-        </aside>
-      </section>
+            <rect class="b" x="515" y="10" width="200" height="60" rx="6"/>
+            <text class="t" x="615" y="36" text-anchor="middle">Worker 1</text>
+            <text class="s" x="615" y="55" text-anchor="middle">alive, running a task</text>
 
-      <main>
-        <!-- About section -->
-        <section id="about" aria-labelledby="about-heading">
-          <header>
-            <h2 id="about-heading">About</h2>
-            <p class="section-subtitle">Background &amp; interests</p>
-          </header>
-          <div class="about-grid">
-            <div>
-              <p>
-                I enjoy working at the intersection of <strong>hardware</strong> and <strong>algorithms</strong>.
-                My early training in mechanical system modeling and controls shaped how I think about
-                physical constraints, while my later shift toward electrical engineering and machine
-                learning showed me how to build robust computing systems on top of them.
-              </p>
-              <p>
-                At Michigan, I have been involved in <strong>tape-out-oriented VLSI design</strong> and
-                <strong>GPU timing-error resilience</strong> research, including standard-cell layout,
-                Razor-style error detection, and system-level evaluation. In parallel, I work on
-                <strong>ML for medical imaging</strong> for head and neck cancer survival prediction
-                using multi-modal CT/PET data.
-              </p>
-            </div>
-            <div>
-              <dl>
-                <dt>Research interests</dt>
-                <dd>VLSI design; error-resilient architectures; ML for medical imaging</dd>
-                <dt>Long-term goal</dt>
-                <dd>Become a researcher and educator in reliable, energy-efficient computing hardware.</dd>
-                <dt>Keywords</dt>
-                <dd>
-                  <div class="tag-row">
-                    <span class="tag">Standard-cell layout</span>
-                    <span class="tag">DVFS &amp; timing errors</span>
-                    <span class="tag">Compute-in-memory</span>
-                    <span class="tag">3D printing</span>
-                  </div>
-                </dd>
-              </dl>
-            </div>
-          </div>
-        </section>
+            <rect class="b red dash" x="515" y="100" width="200" height="60" rx="6"/>
+            <text class="t" x="615" y="126" text-anchor="middle">Worker 2</text>
+            <text class="s" x="615" y="145" text-anchor="middle">5 heartbeats missed: dead</text>
 
-        <!-- Research section -->
-        <section id="research" aria-labelledby="research-heading">
-          <header>
-            <h2 id="research-heading">Research</h2>
-            <p class="section-subtitle">Selected projects &amp; ongoing work</p>
-          </header>
-          <ul class="item-list">
-            <li>
-              <div class="item-title">Timing-Error Resilient GPU with Razor III</div>
-              <div class="item-meta">University of Michigan · VLSI &amp; architecture · 2024 – present</div>
-              <p>
-                Working on standard-cell level design and layout of Razor-based flip-flops and integrating
-                them into a GPU-like pipeline to study the trade-offs between aggressive voltage scaling,
-                timing-error detection, and overall energy efficiency.
-              </p>
-              <div class="item-badge-row">
-                <span class="tag">Razor III</span>
-                <span class="tag">TSMC PDK</span>
-                <span class="tag">GPU pipeline</span>
-              </div>
-            </li>
-            <li>
-              <div class="item-title">3D-Printed Anisotropic Magnetic Coating for Capsule Robot</div>
-              <div class="item-meta">UM Radiation Oncology &amp; UT Austin · Robotics &amp; fabrication · 2024 – present</div>
-              <p>
-                Designing a soft magnetic coating that enables directional rolling of a magnetically actuated
-                capsule robot inside a complex environment, combining 3D printing, material characterization,
-                and control-oriented modeling.
-              </p>
-              <div class="item-badge-row">
-                <span class="tag">Capsule robot</span>
-                <span class="tag">Soft magnetics</span>
-                <span class="tag">3D printing</span>
-              </div>
-            </li>
-            <li>
-              <div class="item-title">DeepMTS + Foundation Models for HNSCC Survival</div>
-              <div class="item-meta">ML for Health · Medical imaging &amp; survival analysis · 2024 – present</div>
-              <p>
-                Extending the DeepMTS framework with CT/PET foundation models to improve survival prediction
-                for head and neck squamous cell carcinoma, focusing on multi-modal feature fusion and robust
-                evaluation across cohorts.
-              </p>
-              <div class="item-badge-row">
-                <span class="tag">CT/PET</span>
-                <span class="tag">Survival analysis</span>
-                <span class="tag">Foundation models</span>
-              </div>
-            </li>
-          </ul>
-        </section>
+            <rect class="b blue" x="515" y="190" width="200" height="60" rx="6"/>
+            <text class="t" x="615" y="216" text-anchor="middle">Worker 3</text>
+            <text class="s" x="615" y="235" text-anchor="middle">gets the lost task</text>
 
-        <!-- Projects section -->
-        <section id="projects" aria-labelledby="projects-heading">
-          <header>
-            <h2 id="projects-heading">Projects</h2>
-            <p class="section-subtitle">Course &amp; independent projects</p>
-          </header>
-          <ul class="item-list">
-            <li>
-              <div class="item-title">Haptic Steering Wheel: CAN-Based Virtual Wall &amp; Chain</div>
-              <div class="item-meta">EECS 461 · Embedded control · 2024</div>
-              <p>
-                Implemented a real-time embedded controller for a haptic steering wheel using CAN bus,
-                ADC/PWM drivers, and virtual wall/chain models, focusing on stability, latency, and safety
-                under tight real-time constraints.
-              </p>
-              <div class="item-badge-row">
-                <span class="tag">Embedded C</span>
-                <span class="tag">Real-time control</span>
-                <span class="tag">CAN bus</span>
-              </div>
-            </li>
-            <li>
-              <div class="item-title">Tape-Out-Oriented Digital IC Design</div>
-              <div class="item-meta">VLSI design flow · 2023 – 2024</div>
-              <p>
-                Completed a full digital design flow including RTL, synthesis, place-and-route, sign-off,
-                and pad-ring integration, gaining hands-on experience with DRC/LVS/PEX and timing closure.
-              </p>
-              <div class="item-badge-row">
-                <span class="tag">RTL to GDS</span>
-                <span class="tag">DRC/LVS</span>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Publications / Manuscripts section -->
-        <section id="publications" aria-labelledby="publications-heading">
-          <header>
-            <h2 id="publications-heading">Publications &amp; Manuscripts</h2>
-            <p class="section-subtitle">Preprints &amp; in preparation</p>
-          </header>
-          <ul class="item-list">
-            <li>
-              <div class="item-title">3D-Printed Anisotropic Soft Magnetic Coating for Directional Rolling of a Capsule Robot</div>
-              <div class="item-meta">Under preparation for ICRA 2026</div>
-              <p>
-                J. Zhou, et al. Designing and characterizing an anisotropic magnetic coating to enable
-                robust directional rolling of a magnetically actuated capsule robot in complex environments.
-              </p>
-              <div class="item-link">Draft available upon request.</div>
-            </li>
-            <li>
-              <div class="item-title">DeepMTS with CT/PET Foundation Models for HNSCC Survival Prediction</div>
-              <div class="item-meta">ML4H 2025 – Findings Track, Area 2</div>
-              <p>
-                J. Zhou, et al. Integrating pre-trained CT/PET encoders into DeepMTS for improved survival
-                prediction and generalization across cohorts.
-              </p>
-              <div class="item-link">Preprint coming soon.</div>
-            </li>
-          </ul>
-        </section>
-
-        <!-- Contact section -->
-        <section id="contact" aria-labelledby="contact-heading">
-          <header>
-            <h2 id="contact-heading">Contact</h2>
-            <p class="section-subtitle">Get in touch</p>
-          </header>
-          <div class="about-grid">
-            <div>
-              <p>
-                If you are interested in my work or have questions about potential collaboration or graduate
-                study, feel free to reach out. I am happy to share project details, code, or additional
-                materials upon request.
-              </p>
-            </div>
-            <div>
-              <dl>
-                <dt>Email</dt>
-                <!-- TODO: replace with your preferred email address -->
-                <dd><a href="mailto:your_email@umich.edu">your_email@umich.edu</a></dd>
-                <dt>GitHub</dt>
-                <!-- TODO: replace with your GitHub profile link -->
-                <dd><a href="https://github.com/your-github" target="_blank" rel="noopener">github.com/your-github</a></dd>
-                <dt>LinkedIn</dt>
-                <!-- TODO: replace with your LinkedIn profile link -->
-                <dd><a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">linkedin.com/in/your-linkedin</a></dd>
-              </dl>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div>
-          © <span id="year-span"></span> Jin Zhou. All rights reserved.
+            <path class="l" d="M5 226H40" marker-end="url(#ah)"/>
+            <text class="s" x="50" y="230">task, JSON over TCP</text>
+            <path class="l soft dash" d="M5 248H40" marker-end="url(#ah-soft)"/>
+            <text class="s" x="50" y="252">heartbeat over UDP</text>
+          </svg>
         </div>
-        <div>
-          Last updated: <span>Nov 2025</span>
-        </div>
-      </footer>
-    </div>
-  </div>
+        <figcaption>What happens when a Worker dies in the middle of a job.</figcaption>
+      </figure>
+    </article>
 
-  <script>
-    // Small helper to keep the year up to date
-    const y = new Date().getFullYear();
-    const span = document.getElementById("year-span");
-    if (span) span.textContent = y;
-  </script>
+    <article class="entry">
+      <h3>Search engine</h3>
+      <p class="meta">MapReduce, Flask, SQLite</p>
+      <ul>
+        <li>A chain of MapReduce jobs turns a crawl of Wikipedia pages into an inverted index with tf-idf weights and document normalization factors, split into three segments by document ID.</li>
+        <li>Three index servers, each a Flask REST API holding one segment, score documents as a weighted sum of PageRank and tf-idf cosine similarity.</li>
+        <li>The search server sends each query to all three in parallel threads, merges the ranked lists, and looks up titles and summaries in SQLite.</li>
+      </ul>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 288" role="img" aria-labelledby="figs-title">
+            <title id="figs-title">Two stages. Offline, a MapReduce pipeline builds an inverted index from Wikipedia pages and splits it into three segments. Online, the browser sends a query to the search server, which queries three index servers in parallel. Each index server loads one segment. The score is w times PageRank plus one minus w times tf-idf cosine similarity.</title>
+            <text class="h" x="5" y="16">Build the index, offline</text>
+            <text class="h" x="5" y="170">Answer a query</text>
+
+            <path class="l" d="M155 60H193" marker-end="url(#ah)"/>
+            <path class="l" d="M425 60H468" marker-end="url(#ah)"/>
+            <path class="l soft dash" d="M509 92V180" marker-end="url(#ah-soft)"/>
+            <path class="l soft dash" d="M593 92V180" marker-end="url(#ah-soft)"/>
+            <path class="l soft dash" d="M677 92V180" marker-end="url(#ah-soft)"/>
+            <text class="s" x="499" y="141" text-anchor="end">loaded at startup</text>
+            <path class="l" d="M157 214H193" marker-start="url(#ah)" marker-end="url(#ah)"/>
+            <path class="l" d="M427 214H468" marker-start="url(#ah)" marker-end="url(#ah)"/>
+
+            <rect class="b" x="5" y="28" width="150" height="64" rx="6"/>
+            <text class="t" x="80" y="56" text-anchor="middle">Wikipedia pages</text>
+            <text class="s" x="80" y="75" text-anchor="middle">HTML crawl</text>
+
+            <rect class="b" x="195" y="28" width="230" height="64" rx="6"/>
+            <text class="t" x="310" y="56" text-anchor="middle">MapReduce pipeline</text>
+            <text class="s" x="310" y="75" text-anchor="middle">term frequency, idf, normalization</text>
+
+            <rect class="b amber" x="470" y="28" width="78" height="64" rx="6"/>
+            <text class="t" x="509" y="56" text-anchor="middle">Index</text>
+            <text class="s" x="509" y="75" text-anchor="middle">segment 0</text>
+            <rect class="b amber" x="554" y="28" width="78" height="64" rx="6"/>
+            <text class="t" x="593" y="56" text-anchor="middle">Index</text>
+            <text class="s" x="593" y="75" text-anchor="middle">segment 1</text>
+            <rect class="b amber" x="638" y="28" width="78" height="64" rx="6"/>
+            <text class="t" x="677" y="56" text-anchor="middle">Index</text>
+            <text class="s" x="677" y="75" text-anchor="middle">segment 2</text>
+
+            <rect class="b" x="5" y="182" width="150" height="64" rx="6"/>
+            <text class="t" x="80" y="210" text-anchor="middle">Browser</text>
+            <text class="s" x="80" y="229" text-anchor="middle">query and weight w</text>
+
+            <rect class="b blue" x="195" y="182" width="230" height="64" rx="6"/>
+            <text class="t" x="310" y="210" text-anchor="middle">Search server</text>
+            <text class="s" x="310" y="229" text-anchor="middle">parallel requests, merged results</text>
+
+            <rect class="b blue" x="470" y="182" width="78" height="64" rx="6"/>
+            <text class="t" x="509" y="210" text-anchor="middle">Index</text>
+            <text class="s" x="509" y="229" text-anchor="middle">server 0</text>
+            <rect class="b blue" x="554" y="182" width="78" height="64" rx="6"/>
+            <text class="t" x="593" y="210" text-anchor="middle">Index</text>
+            <text class="s" x="593" y="229" text-anchor="middle">server 1</text>
+            <rect class="b blue" x="638" y="182" width="78" height="64" rx="6"/>
+            <text class="t" x="677" y="210" text-anchor="middle">Index</text>
+            <text class="s" x="677" y="229" text-anchor="middle">server 2</text>
+
+            <text class="n" x="360" y="276" text-anchor="middle">score = w × PageRank + (1 − w) × tf-idf cosine similarity</text>
+          </svg>
+        </div>
+        <figcaption>The index is built once, offline. At query time each index server scores the documents in its own segment with the formula above.</figcaption>
+      </figure>
+    </article>
+
+    <article class="entry">
+      <h3>Network file server</h3>
+      <p class="meta">C++, Boost threads, TCP sockets</p>
+      <ul>
+        <li>A hierarchical file system served over TCP. Clients can create and delete files and directories, and read or write file blocks. Each request runs in its own thread.</li>
+        <li>Every file and directory has a reader/writer lock. A request walks its path with hand-over-hand locking, so requests on unrelated files do not wait for each other.</li>
+        <li>Disk writes are ordered so that a block is written before any block that points to it. A crash at any moment leaves the file system consistent.</li>
+      </ul>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 204" role="img" aria-labelledby="figf1-title">
+            <title id="figf1-title">Lock intervals over time while writing a block of the file /dir/file. A shared lock on the root directory overlaps with a shared lock on /dir, which overlaps with an exclusive lock on /dir/file. Each lock is taken before the previous one is released.</title>
+            <rect class="band" x="270" y="30" width="60" height="86"/>
+            <rect class="band" x="420" y="80" width="60" height="86"/>
+            <text class="s" x="345" y="24">the next lock is taken before the previous one is released</text>
+
+            <path class="hair" d="M130 48H710M130 98H710M130 148H710"/>
+
+            <text class="mono" x="120" y="52.5" text-anchor="end">/</text>
+            <text class="mono" x="120" y="102.5" text-anchor="end">/dir</text>
+            <text class="mono" x="120" y="152.5" text-anchor="end">/dir/file</text>
+
+            <rect class="b blue" x="140" y="35" width="190" height="26" rx="5"/>
+            <text class="n" x="235" y="52.5" text-anchor="middle">shared lock</text>
+            <rect class="b blue" x="270" y="85" width="210" height="26" rx="5"/>
+            <text class="n" x="375" y="102.5" text-anchor="middle">shared lock</text>
+            <rect class="b amber" x="420" y="135" width="280" height="26" rx="5"/>
+            <text class="n" x="560" y="152.5" text-anchor="middle">exclusive lock while the block is written</text>
+
+            <path class="l soft" d="M130 184H706" marker-end="url(#ah-soft)"/>
+            <text class="s" x="130" y="200">time</text>
+          </svg>
+        </div>
+        <figcaption>Locks held while one request writes a block of <code>/dir/file</code>. Directories on the path are only read, so other requests can pass through them at the same time.</figcaption>
+      </figure>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 140" role="img" aria-labelledby="figf2-title">
+            <title id="figf2-title">Disk write order when creating a file. The new file's inode is written first. The directory block that points to it is written second. The directory inode is written last, and only if the directory grew by a block.</title>
+            <path class="l" d="M215 67H253" marker-end="url(#ah)"/>
+            <path class="l" d="M465 67H503" marker-end="url(#ah)"/>
+
+            <rect class="b" x="5" y="34" width="210" height="66" rx="6"/>
+            <text class="t" x="110" y="63" text-anchor="middle">Directory inode</text>
+            <text class="s" x="110" y="82" text-anchor="middle">lists the directory's blocks</text>
+
+            <rect class="b" x="255" y="34" width="210" height="66" rx="6"/>
+            <text class="t" x="360" y="63" text-anchor="middle">Directory block</text>
+            <text class="s" x="360" y="82" text-anchor="middle">entry for the new file</text>
+
+            <rect class="b green" x="505" y="34" width="210" height="66" rx="6"/>
+            <text class="t" x="610" y="63" text-anchor="middle">New file inode</text>
+            <text class="s" x="610" y="82" text-anchor="middle">type, owner, size, blocks</text>
+
+            <circle class="badge" cx="23" cy="34" r="11"/>
+            <text class="badge-t" x="23" y="38.5" text-anchor="middle">3</text>
+            <circle class="badge" cx="273" cy="34" r="11"/>
+            <text class="badge-t" x="273" y="38.5" text-anchor="middle">2</text>
+            <circle class="badge" cx="523" cy="34" r="11"/>
+            <text class="badge-t" x="523" y="38.5" text-anchor="middle">1</text>
+
+            <text class="s" x="110" y="122" text-anchor="middle">last, only if the directory grew</text>
+            <text class="s" x="360" y="122" text-anchor="middle">written second</text>
+            <text class="s" x="610" y="122" text-anchor="middle">written first</text>
+          </svg>
+        </div>
+        <figcaption>Write order when creating a file. Arrows are on-disk pointers, and the numbers are the order of the writes, so no pointer ever leads to a block that has not been written.</figcaption>
+      </figure>
+    </article>
+
+    <article class="entry">
+      <h3>Thread library</h3>
+      <p class="meta">C++, ucontext</p>
+      <ul>
+        <li>A user-level thread library with threads, mutexes, and condition variables, built on <code>ucontext</code> context switches.</li>
+        <li>A timer interrupt can preempt the running thread. The library disables interrupts around its own data structures so that its operations stay atomic.</li>
+        <li>All queues are first in, first out. A thread's stack is freed soon after its function returns, whether or not the thread object still exists.</li>
+      </ul>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 256" role="img" aria-labelledby="figt-title">
+            <title id="figt-title">Thread states. Threads wait in a first in, first out ready queue. The thread at the head is dispatched to the CPU. A running thread goes back to the tail of the ready queue when it yields or is preempted by a timer interrupt. It moves to a waiting queue when it blocks on a mutex, a condition variable, or a join, and returns to the ready queue when woken. When its function returns, the thread is finished and its stack is freed.</title>
+            <path class="l" d="M620 40V16H130V72H168" marker-end="url(#ah)"/>
+            <path class="l" d="M170 207H130V72"/>
+            <path class="l" d="M430 72H528" marker-end="url(#ah)"/>
+            <path class="l" d="M585 106V207H542" marker-end="url(#ah)"/>
+            <path class="l" d="M668 106V190" marker-end="url(#ah)"/>
+
+            <text class="s" x="375" y="33" text-anchor="middle">yield, or preempted by a timer interrupt</text>
+            <text class="s" x="479" y="64" text-anchor="middle">dispatch</text>
+            <text class="s" x="577" y="150" text-anchor="end">lock, wait, join</text>
+            <text class="s" x="660" y="172" text-anchor="end">returns</text>
+            <text class="s" x="122" y="128" text-anchor="end">unlock,</text>
+            <text class="s" x="122" y="144" text-anchor="end">signal, or</text>
+            <text class="s" x="122" y="160" text-anchor="end">thread exit</text>
+
+            <rect class="b gray" x="170" y="48" width="260" height="48" rx="8"/>
+            <rect class="b" x="262" y="58" width="44" height="28" rx="5"/>
+            <text class="n" x="284" y="76.5" text-anchor="middle">T4</text>
+            <rect class="b" x="318" y="58" width="44" height="28" rx="5"/>
+            <text class="n" x="340" y="76.5" text-anchor="middle">T3</text>
+            <rect class="b" x="374" y="58" width="44" height="28" rx="5"/>
+            <text class="n" x="396" y="76.5" text-anchor="middle">T2</text>
+            <text class="s" x="300" y="114" text-anchor="middle">Ready queue, first in first out</text>
+
+            <rect class="b blue" x="530" y="40" width="180" height="66" rx="6"/>
+            <text class="t" x="620" y="60" text-anchor="middle">Running on the CPU</text>
+            <rect class="b" x="598" y="68" width="44" height="28" rx="5"/>
+            <text class="n" x="620" y="86.5" text-anchor="middle">T1</text>
+
+            <rect class="b amber" x="170" y="168" width="370" height="78" rx="8"/>
+            <text class="t" x="182" y="189">Waiting</text>
+            <rect class="b" x="180" y="198" width="112" height="36" rx="5"/>
+            <text class="s" x="236" y="220.5" text-anchor="middle">mutex</text>
+            <rect class="b" x="299" y="198" width="112" height="36" rx="5"/>
+            <text class="s" x="355" y="220.5" text-anchor="middle">cond. variable</text>
+            <rect class="b" x="418" y="198" width="112" height="36" rx="5"/>
+            <text class="s" x="474" y="220.5" text-anchor="middle">join</text>
+
+            <rect class="b" x="620" y="192" width="95" height="48" rx="6"/>
+            <text class="t" x="667.5" y="212" text-anchor="middle">Finished</text>
+            <text class="s" x="667.5" y="229" text-anchor="middle">stack freed</text>
+          </svg>
+        </div>
+        <figcaption>Where a thread can be, and what moves it. Each mutex, condition variable, and joined thread has its own waiting queue.</figcaption>
+      </figure>
+    </article>
+
+    <article class="entry">
+      <h3>Virtual memory pager</h3>
+      <p class="meta">C++</p>
+      <ul>
+        <li>A pager that manages part of each process's address space, with pages backed either by a swap file or by blocks of a regular file.</li>
+        <li>Work is put off for as long as possible. A new swap-backed page points at one shared page of zeros and gets its own physical page only on its first write.</li>
+        <li>When memory is full, the clock algorithm picks a page to evict, and the page is written to disk only if it is dirty.</li>
+      </ul>
+      <figure>
+        <div class="diagram">
+          <svg viewBox="0 0 720 264" role="img" aria-labelledby="figp-title">
+            <title id="figp-title">Life of a swap-backed page. When just mapped it points at the shared zero page, read-only. On the first write the page is copied and becomes resident with its own physical page. The clock algorithm can evict it to its swap block, and a later fault reads it back in. Below, the clock queue: the page at the head goes back to the tail if it was referenced, and is evicted if it was not.</title>
+            <path class="l" d="M175 63H273" marker-end="url(#ah)"/>
+            <text class="s" x="224" y="54" text-anchor="middle">first write</text>
+            <text class="s" x="224" y="80" text-anchor="middle">copy the page</text>
+            <path class="l" d="M445 50H543" marker-end="url(#ah)"/>
+            <text class="s" x="494" y="42" text-anchor="middle">clock evicts</text>
+            <path class="l" d="M545 78H447" marker-end="url(#ah)"/>
+            <text class="s" x="494" y="94" text-anchor="middle">fault: read in</text>
+
+            <rect class="b amber" x="5" y="28" width="170" height="70" rx="6"/>
+            <text class="t" x="90" y="50" text-anchor="middle">Just mapped</text>
+            <text class="s" x="90" y="68" text-anchor="middle">points at the shared</text>
+            <text class="s" x="90" y="84" text-anchor="middle">zero page, read-only</text>
+
+            <rect class="b blue" x="275" y="28" width="170" height="70" rx="6"/>
+            <text class="t" x="360" y="50" text-anchor="middle">Resident</text>
+            <text class="s" x="360" y="68" text-anchor="middle">has its own</text>
+            <text class="s" x="360" y="84" text-anchor="middle">physical page</text>
+
+            <rect class="b" x="545" y="28" width="170" height="70" rx="6"/>
+            <text class="t" x="630" y="50" text-anchor="middle">Not resident</text>
+            <text class="s" x="630" y="68" text-anchor="middle">contents are in</text>
+            <text class="s" x="630" y="84" text-anchor="middle">its swap block</text>
+
+            <text class="h" x="5" y="132">Clock queue of resident pages</text>
+            <path class="l" d="M185 172V150H650V192H614" marker-end="url(#ah)"/>
+            <text class="s" x="417" y="166" text-anchor="middle">A was referenced: back to the tail</text>
+            <text class="s" x="140" y="196" text-anchor="end">head</text>
+
+            <rect class="b blue" x="150" y="172" width="70" height="40" rx="5"/>
+            <text class="t" x="180" y="197" text-anchor="middle">A</text>
+            <circle class="dot-on" cx="207" cy="184" r="4"/>
+            <rect class="b blue" x="228" y="172" width="70" height="40" rx="5"/>
+            <text class="t" x="258" y="197" text-anchor="middle">B</text>
+            <circle class="dot-off" cx="285" cy="184" r="4"/>
+            <rect class="b blue" x="306" y="172" width="70" height="40" rx="5"/>
+            <text class="t" x="336" y="197" text-anchor="middle">C</text>
+            <circle class="dot-on" cx="363" cy="184" r="4"/>
+            <rect class="b blue" x="384" y="172" width="70" height="40" rx="5"/>
+            <text class="t" x="414" y="197" text-anchor="middle">D</text>
+            <circle class="dot-off" cx="441" cy="184" r="4"/>
+            <rect class="b blue" x="462" y="172" width="70" height="40" rx="5"/>
+            <text class="t" x="492" y="197" text-anchor="middle">E</text>
+            <circle class="dot-on" cx="519" cy="184" r="4"/>
+            <rect class="b blue" x="540" y="172" width="70" height="40" rx="5"/>
+            <text class="t" x="570" y="197" text-anchor="middle">F</text>
+            <circle class="dot-off" cx="597" cy="184" r="4"/>
+
+            <path class="l" d="M263 212V236" marker-end="url(#ah)"/>
+            <text class="s" x="228" y="254">B was not: evicted, written to disk only if dirty</text>
+            <circle class="dot-on" cx="580" cy="250" r="4"/>
+            <text class="s" x="590" y="254">referenced bit set</text>
+          </svg>
+        </div>
+        <figcaption>Top: the life of a swap-backed page. Bottom: how the clock algorithm chooses a page to evict. File-backed pages follow the same path, except that their contents live in a file block.</figcaption>
+      </figure>
+    </article>
+  </section>
+
+  <section class="section" aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <ul class="plain">
+      <li><strong>The University of Texas at Austin</strong><br>M.S. in Computer Science, Aug 2026 – May 2028 (expected)</li>
+      <li><strong>University of Michigan, Ann Arbor</strong><br>B.S.E. in Data Science, minor in Mathematics, Sep 2024 – May 2026<br>Jackson &amp; Muriel Lum Scholarship, University Honors and Dean's List</li>
+      <li><strong>Shanghai Jiao Tong University</strong><br>B.S.E. in Mechanical Engineering, SJTU-UMich Joint Institute, Sep 2022 – Aug 2026<br>Ranked 16 of 306</li>
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="skills">
+    <h2 id="skills">Skills</h2>
+    <dl class="skills">
+      <div><dt>Languages:</dt> <dd>C++, Python, SQL, C, MATLAB</dd></div>
+      <div><dt>Systems:</dt> <dd>multithreading, mutexes and condition variables, virtual memory, TCP and UDP sockets, fault tolerance</dd></div>
+      <div><dt>Back end and data:</dt> <dd>Flask, REST APIs, MapReduce, BigQuery, MySQL and MariaDB, GCP, Docker, Git, Linux</dd></div>
+      <div><dt>Machine learning:</dt> <dd>PyTorch, OpenCV, CLIP, DVC, MLflow</dd></div>
+    </dl>
+  </section>
+
+  <footer>Updated November 2026.</footer>
+
+</main>
 </body>
 </html>
